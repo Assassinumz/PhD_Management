@@ -1,0 +1,119 @@
+{% extends 'base_user.html' %}
+{% block content %}
+{% load static %}
+    <div class="w-screen h-screen flex items-center justify-center pt-10">
+        <div class="flex">
+
+            <div class="flex flex-col items-center bg-slate-100 rounded-lg p-2 mx-10">
+                {% if user.paper_1 %}
+
+                <form enctype="multipart/form-data" class="flex justify-between items-center flex-col border-dotted border-4 rounded-lg border-zinc-800/60 p-5" method="POST" action="{% url 'delete_paper' %}">
+                    {% csrf_token %}
+                    <h2 class="text-3xl font-rubik text-zinc-800">Paper 1</h2>
+
+                    <label class="mt-5 w-52 h-24 flex flex-col items-center justify-center bg-white text-primary rounded-lg shadow-lg tracking-wide uppercase border border-primary cursor-pointer hover:bg-primary/80 hover:text-slate-100">
+                        <a class="flex flex-col items-center" target="_blank" href='{{ user.paper_1 }}'> 
+                            <i class="fa-solid fa-file text-4xl"></i>
+                            <span class="mt-2 text-base font-roboto leading-normal">View file</span>
+                        </a>
+                    </label>
+                    <input type="hidden" name="paper_1" value="paper_1">
+
+                    <input class="w-full mt-5 cursor-pointer bg-red-500 hover:bg-red-500/80 py-2 font-rubik" type="submit" value="Delete"/>
+                </form>
+
+                {% else %}
+
+                <form enctype="multipart/form-data" class="flex justify-between items-center flex-col border-dotted border-4 rounded-lg border-zinc-800/60 p-5" method="POST">
+                    {% csrf_token %}
+                    <h2 class="text-3xl font-rubik text-zinc-800">Paper 1</h2>
+                    
+                    <label class="mt-5 w-52 h-24 flex flex-col items-center justify-center bg-white text-primary rounded-lg shadow-lg tracking-wide uppercase border border-primary cursor-pointer hover:bg-primary/80 hover:text-slate-100">
+                        <i class="fa-solid fa-cloud-arrow-up text-4xl"></i>
+                        <span class="mt-2 text-base font-roboto leading-normal">Select a file</span>
+                        <input type='file' class="hidden" name="paper_1" />
+                    </label>
+
+                    <input class="w-full mt-5 cursor-pointer bg-primary hover:bg-primary/80 py-2 font-rubik" type="submit" value="Submit"/>
+                </form>
+
+                {% endif %}
+            </div>
+            
+            <div class="flex flex-col items-center bg-slate-100 rounded-lg p-2 mx-10">
+                {% if user.paper_2 %}
+
+                <form enctype="multipart/form-data" class="flex justify-between items-center flex-col border-dotted border-4 rounded-lg border-zinc-800/60 p-5" method="POST" action="{% url 'delete_paper' %}">
+                    {% csrf_token %}
+                    <h2 class="text-3xl font-rubik text-zinc-800">Paper 2</h2>
+
+                    <label class="mt-5 w-52 h-24 flex flex-col items-center justify-center bg-white text-primary rounded-lg shadow-lg tracking-wide uppercase border border-primary cursor-pointer hover:bg-primary/80 hover:text-slate-100">
+                        <a class="flex flex-col items-center" target="_blank" href='{{ user.paper_2 }}'> 
+                            <i class="fa-solid fa-file text-4xl"></i>
+                            <span class="mt-2 text-base font-roboto leading-normal">View file</span>
+                        </a>
+                    </label>
+                    <input type="hidden" name="paper_2" value="paper_2">
+
+                    <input class="w-full mt-5 cursor-pointer bg-red-500 hover:bg-red-500/80 py-2 font-rubik" type="submit" value="Delete"/>
+                </form>
+
+                {% else %}
+
+                <form enctype="multipart/form-data" class="flex justify-between items-center flex-col border-dotted border-4 rounded-lg border-zinc-800/60 p-5" method="POST">
+                    {% csrf_token %}
+                    <h2 class="text-3xl font-rubik text-zinc-800">Paper 2</h2>
+                    
+                    <label class="mt-5 w-52 h-24 flex flex-col items-center justify-center bg-white text-primary rounded-lg shadow-lg tracking-wide uppercase border border-primary cursor-pointer hover:bg-primary/80 hover:text-slate-100">
+                        <i class="fa-solid fa-cloud-arrow-up text-4xl"></i>
+                        <span class="mt-2 text-base font-roboto leading-normal">Select a file</span>
+                        <input type='file' class="hidden" name="paper_2" />
+                    </label>
+
+                    <input class="w-full mt-5 cursor-pointer bg-primary hover:bg-primary/80 py-2 font-rubik" type="submit" value="Submit"/>
+                </form>
+                
+                {% endif %}
+            </div>
+            
+            <div class="flex flex-col items-center bg-slate-100 rounded-lg p-2 mx-10">
+                {% if user.paper_3 %}
+
+                <form enctype="multipart/form-data" class="flex justify-between items-center flex-col border-dotted border-4 rounded-lg border-zinc-800/60 p-5" method="POST" action="{% url 'delete_paper' %}">
+                    {% csrf_token %}
+                    <h2 class="text-3xl font-rubik text-zinc-800">Paper 3</h2>
+
+                    <label class="mt-5 w-52 h-24 flex flex-col items-center justify-center bg-white text-primary rounded-lg shadow-lg tracking-wide uppercase border border-primary cursor-pointer hover:bg-primary/80 hover:text-slate-100">
+                        <a class="flex flex-col items-center" target="_blank" href='{{ user.paper_3 }}'> 
+                            <i class="fa-solid fa-file text-4xl"></i>
+                            <span class="mt-2 text-base font-roboto leading-normal">View file</span>
+                        </a>
+                    </label>
+                    <input type="hidden" name="paper_3" value="paper_3">
+
+                    <input class="w-full mt-5 cursor-pointer bg-red-500 hover:bg-red-500/80 py-2 font-rubik" type="submit" value="Delete"/>
+                </form>
+
+                {% else %}
+
+                <form enctype="multipart/form-data" class="flex justify-between items-center flex-col border-dotted border-4 rounded-lg border-zinc-800/60 p-5" method="POST">
+                    {% csrf_token %}
+                    <h2 class="text-3xl font-rubik text-zinc-800">Paper 3</h2>
+                    
+                    <label class="mt-5 w-52 h-24 flex flex-col items-center justify-center bg-white text-primary rounded-lg shadow-lg tracking-wide uppercase border border-primary cursor-pointer hover:bg-primary/80 hover:text-slate-100">
+                        <i class="fa-solid fa-cloud-arrow-up text-4xl"></i>
+                        <span class="mt-2 text-base font-roboto leading-normal">Select a file</span>
+                        <input type='file' class="hidden" name="paper_3" />
+                    </label>
+
+                    <input class="w-full mt-5 cursor-pointer bg-primary hover:bg-primary/80 py-2 font-rubik" type="submit" value="Submit"/>
+                </form>
+                
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+    
+{% endblock %}

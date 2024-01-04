@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PHD{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'presidency_logo.png' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" type="text/css"/>
+    <script src="https://kit.fontawesome.com/51634d39bc.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #add_pub_button, #add_con_button, #add_pat_button {
+        border-radius: 50%;
+      }
+    </style>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+                primary: '#3b82f6',
+              },
+              fontFamily: {
+                'roboto': 'Roboto Condensed',
+                'rubik': 'Rubik'
+              },
+            }
+          }
+        }
+      </script>
+</head>
+<body class="bg-zinc-900 text-slate-100">
+
+    <nav class="w-full flex flex-col justify-center items-center py-6">
+      <img class="w-64" src="{% static 'presidency_logo_full.png' %}" />
+      <ul class="flex mt-5 font-roboto text-xl bg-slate-100 px-5 py-2 rounded-3xl">
+        <li class="mx-5 text-zinc-800 hover:text-primary transition ease-in delay-75">
+            <a class="" href="{% url 'user_dashboard' %}">Home</a>
+        </li>
+        <li class="mx-5 text-zinc-800 hover:text-primary transition ease-in delay-75">
+            <a class="" href="{% url 'profile' %}">Profile</a>
+        </li>
+        <li class="mx-5 text-zinc-800 hover:text-primary transition ease-in delay-75">
+            <a class="" href="{% url 'time_table' %}">Time Table</a>
+        </li>
+        <li class="mx-5 text-black hover:text-primary transition ease-in delay-75">
+            <a class="" href="{% url 'achievements' %}">Achievements</a>
+        </li>
+        <li class="mx-5 text-black hover:text-primary transition ease-in delay-75">
+            <a class="" href="{% url 'logout' %}">Log out</a>
+        </li>
+        
+      </ul>
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <footer class="mt-10 py-10 flex justify-center relative bottom-0">
+      <p class="font-roboto text-xl">© Vikasana. All Rights Reserved.</p>
+    </footer>
+    
+</body>
+</html>

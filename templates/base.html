@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PHD{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="{% static 'presidency_logo.png' %}">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" type="text/css"/>
+    <script src="https://kit.fontawesome.com/51634d39bc.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+                primary: '#3b82f6',
+              },
+              fontFamily: {
+                'roboto': 'Roboto Condensed',
+                'rubik': 'Rubik'
+              },
+            }
+          }
+        }
+      </script>
+</head>
+<body class="bg-zinc-900 text-slate-100">
+
+    <nav class="w-full flex justify-center py-6 fixed">
+      <img class="w-64" src="{% static 'presidency_logo_full.png' %}" />
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+    
+</body>
+</html>

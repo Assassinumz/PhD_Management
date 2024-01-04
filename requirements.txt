@@ -1,0 +1,5 @@
+django
+jsonfield
+livereload
+pyrebase4
+setuptools

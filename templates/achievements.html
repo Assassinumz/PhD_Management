@@ -1,0 +1,205 @@
+{% extends 'base_user.html' %}
+{% block content %}
+{% load static %}
+
+    <div class="w-full pt-10 flex flex-col justify-center items-center">
+        <div class="flex flex-col items-center">
+            <h1 class="font-rubik text-6xl text-primary mb-10">Publications</h1>
+            <div class="w-full flex px-10 flex-wrap items-center justify-center">
+                
+                {% for key, value in user.publications.items %}
+                    <div class="flex hover:scale-125 transition ease-in delay-100 flex-col justify-between rounded-xl mx-5 my-5 p-3 w-64 h-32 bg-slate-200 hover:border-primary border-2 border-white border-solid underline-offset-4 group">
+                        <h3 class="font-roboto text-xl underline text-zinc-900 group-hover:text-primary">{{key}}</h3>
+                        <div class="ml-auto flex">
+                            <form method="POST" action="{% url 'remove_publication' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="key" value="{{key}}" />
+                                <button type="submit">
+                                    <i class="mr-2 fa-solid fa-trash text-xl text-zinc-900 hover:text-red-500 cursor-pointer"></i>
+                                </button>
+                                
+                            </form>
+                            <a href="{{ value }}">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xl text-zinc-900 group-hover:text-primary cursor-pointer"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+                <div id="add_pub_button" class="mx-5 my-5 cursor-pointer flex justify-center items-center px-3 py-2 bg-primary">
+                    <i class="fa-solid fa-plus text-3xl"></i>
+                </div>
+                
+                <form id="add_pub" class="flex flex-col items-center mx-5 my-5 hidden" method="POST">
+                    {% csrf_token %}
+    
+                    <div class="flex w-64 flex-col bg-black/50 border-2 border-slate-200 border-solid p-3">
+                        
+                        <h3 class="font-roboto text-xl">Title:</h3>
+                        <input required class="px-2 mb-2 text-black font-roboto" type="text" name="publication_name" />
+                        
+                        <h3 class="font-roboto text-xl mt-2">Link:</h3>
+                        <input required class="px-2 mb-2 text-black font-roboto" type="text" name="publication_link" />
+    
+                        <div class="flex w-full items-center font-roboto">
+                            <input id="close_pub" class="w-1/2 my-2 mr-2 bg-red-500 cursor-pointer py-1" type="button" value="Close" />
+                            <input class="w-1/2 my-2 ml-2 bg-primary cursor-pointer py-1" type="submit" value="Add" />
+                            
+                        </div>
+                        
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        
+        <div class="flex flex-col items-center mt-16">
+            <h1 class="font-rubik text-6xl text-primary mb-10">Conferences</h1>
+            <div class="w-full flex px-10 flex-wrap items-center justify-center">
+                
+                {% for key, value in user.conference.items %}
+                    <div class="flex hover:scale-125 transition ease-in delay-100 flex-col justify-between rounded-xl mx-5 my-5 p-3 w-64 h-32 bg-slate-200 hover:border-primary border-2 border-white border-solid underline-offset-4 group">
+                        <h3 class="font-roboto text-xl underline text-zinc-900 group-hover:text-primary">{{key}}</h3>
+                        <div class="ml-auto flex">
+                            <form method="POST" action="{% url 'remove_conference' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="key" value="{{key}}" />
+                                <button type="submit">
+                                    <i class="mr-2 fa-solid fa-trash text-xl text-zinc-900 hover:text-red-500 cursor-pointer"></i>
+                                </button>
+                                
+                            </form>
+                            <a href="{{ value }}">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xl text-zinc-900 group-hover:text-primary cursor-pointer"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+                <div id="add_con_button" class="mx-5 my-5 cursor-pointer flex justify-center items-center px-3 py-2 bg-primary">
+                    <i class="fa-solid fa-plus text-3xl"></i>
+                </div>
+                
+                <form id="add_con" class="flex flex-col items-center mx-5 my-5 hidden" method="POST">
+                    {% csrf_token %}
+    
+                    <div class="flex w-64 flex-col bg-black/50 border-2 border-slate-200 border-solid p-3">
+                        
+                        <h3 class="font-roboto text-xl">Title:</h3>
+                        <input required class="px-2 mb-2 text-black font-roboto" type="text" name="conference_name" />
+                        
+                        <h3 class="font-roboto text-xl mt-2">Link:</h3>
+                        <input required class="px-2 mb-2 text-black font-roboto" type="text" name="conference_link" />
+    
+                        <div class="flex w-full items-center font-roboto">
+                            <input id="close_con" class="w-1/2 my-2 mr-2 bg-red-500 cursor-pointer py-1" type="button" value="Close" />
+                            <input class="w-1/2 my-2 ml-2 bg-primary cursor-pointer py-1" type="submit" value="Add" />
+                            
+                        </div>
+                        
+                    </div>
+                </form>
+
+            </div>
+            
+        </div>
+        
+        <div class="flex flex-col items-center mt-16">
+            <h1 class="font-rubik text-6xl text-primary mb-10">Patents</h1>
+            <div class="w-full flex px-10 flex-wrap items-center justify-center">
+                
+                {% for key, value in user.patent.items %}
+                    <div class="flex hover:scale-125 transition ease-in delay-100 flex-col justify-between rounded-xl mx-5 my-5 p-3 w-64 h-32 bg-slate-200 hover:border-primary border-2 border-white border-solid underline-offset-4 group">
+                        <h3 class="font-roboto text-xl underline text-zinc-900 group-hover:text-primary">{{key}}</h3>
+                        <div class="ml-auto flex">
+                            <form method="POST" action="{% url 'remove_patent' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="key" value="{{key}}" />
+                                <button type="submit">
+                                    <i class="mr-2 fa-solid fa-trash text-xl text-zinc-900 hover:text-red-500 cursor-pointer"></i>
+                                </button>
+                                
+                            </form>
+                            <a href="{{ value }}">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xl text-zinc-900 group-hover:text-primary cursor-pointer"></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+                <div id="add_pat_button" class="mx-5 my-5 cursor-pointer flex justify-center items-center px-3 py-2 bg-primary">
+                    <i class="fa-solid fa-plus text-3xl"></i>
+                </div>
+                
+                <form id="add_pat" class="flex flex-col items-center mx-5 my-5 hidden" method="POST">
+                    {% csrf_token %}
+    
+                    <div class="flex w-64 flex-col bg-black/50 border-2 border-slate-200 border-solid p-3">
+                        
+                        <h3 class="font-roboto text-xl">Title:</h3>
+                        <input required class="px-2 mb-2 text-black font-roboto" type="text" name="patent_name" />
+                        
+                        <h3 class="font-roboto text-xl mt-2">Link:</h3>
+                        <input required class="px-2 mb-2 text-black font-roboto" type="text" name="patent_link" />
+    
+                        <div class="flex w-full items-center font-roboto">
+                            <input id="close_pat" class="w-1/2 my-2 mr-2 bg-red-500 cursor-pointer py-1" type="button" value="Close" />
+                            <input class="w-1/2 my-2 ml-2 bg-primary cursor-pointer py-1" type="submit" value="Add" />
+                            
+                        </div>
+                        
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let add_icon = $('#add_pub_button')
+        let add_pub = $('#add_pub')
+        let close_pub = $('#close_pub')
+        add_icon.on('click', () => {
+            add_icon.toggle()
+            add_pub.toggle()
+        })
+
+        close_pub.on('click', () => {
+            add_pub.toggle()
+            add_icon.toggle()
+        })
+        
+        let pat_icon = $('#add_pat_button')
+        let add_pat = $('#add_pat')
+        let close_pat = $('#close_pat')
+        pat_icon.on('click', () => {
+            pat_icon.toggle()
+            add_pat.toggle()
+        })
+
+        close_pat.on('click', () => {
+            add_pat.toggle()
+            pat_icon.toggle()
+        })
+        
+        let con_icon = $('#add_con_button')
+        let add_con = $('#add_con')
+        let close_con = $('#close_con')
+        con_icon.on('click', () => {
+            con_icon.toggle()
+            add_con.toggle()
+        })
+
+        close_con.on('click', () => {
+            add_con.toggle()
+            con_icon.toggle()
+        })
+    </script>
+
+{% endblock %}
